@@ -1,0 +1,269 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Poppins', sans-serif;
+	overflow: hidden;
+}
+
+.heading{
+	grid-area: heading;
+	display: flex;
+	align-items: flex-start;
+	padding-top: 20px !important;
+	padding-bottom: 0 !important;
+	padding: 15px;
+	font-size:48px !important;
+	color: #fff;
+	z-index: 1;
+}
+.wave{
+	position: fixed;
+	bottom: 0;
+	top: -4px;
+	left: 0;
+	height: 100%;
+	z-index: -1;
+}
+
+.container{
+    width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+    display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 20% 80%;
+	grid-template-areas: 
+	"heading ."
+	"img login-content";
+	align-items: center;
+	justify-items: center;
+}
+
+.img{
+	grid-area: img;
+	display: flex;
+	justify-content: center;
+	height: 450px;
+	align-self: top;
+}
+
+.login-content{
+	grid-area: login-content;
+	display: flex;
+	flex-direction: column;
+	height: 300px;
+	justify-content: center;
+	align-self: top;
+	text-align: center;
+}
+
+.img img{
+	width: 400px;
+}
+
+form{
+	width: 350px;
+}
+
+.login-content img{
+    height: 80px;
+}
+
+.login-content h3{
+	margin: 15px 0;
+	color: #333;
+	font-size: 2rem;
+}
+
+.login-content .input-div{
+	position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.login-content .input-div.one{
+	margin-top: 0;
+}
+
+.i{
+	color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.i i{
+	transition: .3s;
+}
+
+.input-div > div{
+    position: relative;
+	height: 45px;
+}
+/* placeholder upper transition */
+.input-div > div > h5{
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+}
+/* bottom line */
+.input-div:before, .input-div:after{
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #38d39f;
+	transition: .4s;
+}
+/* bottom line transition */
+.input-div:before{
+	right: 50%;
+}
+
+.input-div:after{
+	left: 50%;
+}
+
+.input-div.focus:before, .input-div.focus:after{
+	width: 50%;
+}
+
+.input-div.focus > div > h5{
+	top: -5px;
+	font-size: 15px;
+}
+
+.input-div.focus > .i > i{
+	color: #379683;
+}
+/* input box */
+.input-div > div > input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.5rem 0.7rem;
+	font-size: 1.2rem;
+	color: #555;
+	font-family: 'poppins', sans-serif;
+}
+
+.input-div.pass{
+	margin-bottom: 20px;
+}
+/* forgot pass link */
+a{
+	display: block;
+	width: fit-content;
+	padding-left: 10px;
+	text-align: right;
+	text-decoration: none;
+	color: #999;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+
+a:hover{
+	color: #379683;
+}
+
+.btn{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #379683, #38d39f, #379683);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+.btn:hover{
+	background-position: right;
+}
+
+/* responsiveness */
+/* @media screen and (max-width: 1050px){
+	.container{
+		grid-gap: 3rem;
+	}
+} */
+
+@media screen and (max-width: 1050px){
+	form{
+		width: 290px;
+	}
+	.img img{
+		width: 300px;
+	}
+}
+
+@media screen and (max-width: 900px){
+	.container{
+		/* width: 100%;
+		grid-template-columns: 1fr !important;
+		grid-template-rows: 20% 80% !important;
+		grid-template-areas: 
+		"heading" 
+		"login-container"; */
+		justify-content: center;
+		align-content: center;
+	}
+
+	.img{
+		display: none;
+	}
+
+	.wave{
+		display: none;
+	}
+
+	.heading{
+		justify-content: center;
+		width: 100%;
+		grid-row: 1/2;
+		grid-column: 1/3;
+		align-content: center;
+		padding: 10px;
+		font-size: x-large;
+		color: #333;
+		transition: 1s;
+		
+	}
+	.login-content{
+		grid-row: 2/3;
+		grid-column: 1/3;
+		justify-content: center;
+		align-content: center;
+		padding-top: 20px;
+	}
+	form{
+		width: 270px;
+		padding-top: 30px;
+		justify-self: center;
+		transition: .8s;
+	}
+}
